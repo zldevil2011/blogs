@@ -115,3 +115,9 @@ a {
   font-weight: normal;
   text-align: center;
 }
+.contact-us{
+  padding: 20px;
+  background: white;
+  margin-top: 10px;
+  height: 300px;
+}
