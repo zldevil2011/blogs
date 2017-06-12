@@ -4,8 +4,7 @@ body {
   font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   line-height: 1.428571429;
   color: #333;
-  background-image: url('/images/background.jpeg');
-  background-repeat: repeat;
+  background: url('/images/background.jpeg') repeat;
 }
 
 a {
