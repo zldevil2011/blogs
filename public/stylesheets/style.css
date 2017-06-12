@@ -102,5 +102,16 @@ a {
   background: white;
   margin: 10px 0;
   height: 180px;
-  line-height: 180px;
+  /*line-height: 180px;*/
+}
+.blog-category{
+  background: white;
+}
+.blog-category .col-sm-6{
+  padding: 15px 0;
+  border-bottom: dashed 1px #c6cfd2;
+  line-height: 24px;
+  font-family: 'Microsoft YaHei';
+  font-weight: normal;
+  text-align: center;
 }
