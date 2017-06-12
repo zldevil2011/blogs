@@ -19,6 +19,25 @@ router.post('/register', function(req,res){
         email:req.body.email
     };
     try{
+        user.user_register(user_info, res);
+    }catch(e){
+        console.log(e.message);
+        console.log(e.description);
+        console.log(e.number);
+        console.log(e.name);
+        res.send("Not success");
+    }
+});
+router.get('/login',function(req, res){
+    res.render('login', {title:'Login'});
+});
+router.post('/login', function(req,res){
+
+    var user_info = {
+        username:req.body.username,
+        password:req.body.password,
+    };
+    try{
         user.user_login(user_info, res);
     }catch(e){
         console.log(e.message);

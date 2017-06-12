@@ -17,15 +17,8 @@
                     <input type="password" id="password" class="form-item" v-model="password">
                 </div>
             </div>
-
-            <div class="group">
-                <label class="col-sm-4" for="email">Email</label>
-                <div class="col-sm-8">
-                    <input type="email" class="form-control" id="email" v-model="email"/>
-                </div>
-            </div>
             <div class = "group">
-                <input type="submit" value="Register" class="zl-btn zl-btn-block zl-btn-success" v-on:click="register">
+                <input type="submit" value="Login" class="zl-btn zl-btn-block zl-btn-success" v-on:click="login">
             </div>
         </form>
     </div>
@@ -34,29 +27,30 @@
     var app = new Vue({
         el:"#app",
         data:{
-            message:'用户名或密码错误',
+            message:'',
             username:'username',
             password:'password',
             email:'email'
         },
         methods:{
-            register:function(){
+            login:function(){
                 if(this.username.replace(" ", "") == ""){
                     this.message = "Username please";
                     return false;
                 }else if(this.password.replace(" ", "") == ""){
                     this.message = "Password please";
                     return false;
-                }else if(this.email.replace(" ", "") == ""){
-                    this.message = "Email please";
-                    return false;
                 }
-                this.$http.post('/users/register/',
-                    {username:this.username,password:this.password,email:this.email})
+                this.$http.post('/users/login/',
+                    {username:this.username,password:this.password})
                     .then(function(res){
-                        console.log(res);
-                        alert(res.body);
+                        if(res.body=="success"){
+                            this.message = "登录成功";
+                        }else{
+                            this.message = "用户名或密码错误";
+                        }
                     },function(){
+                        this.message = "登录失败";
                         alert('请求失败处理'); //失败处理
                     });
             }

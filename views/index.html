@@ -1,8 +1,34 @@
 <%include header.html %>
-<div>
-    <h1>Including</h1>
+<div class="header">
+    <ul class="horizontal-ul">
+        <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <li class="pull-right">登出</li>
+        <li class="pull-right">&nbsp;</li>
+        <li class="pull-right">用户名</li>
+    </ul>
 </div>
+<div class="menu">
+    <ul class="horizontal-ul">
+        <li>首页</li><li>专栏</li><li>专家</li><li>排行</li><li>我的</li>
+    </ul>
+</div>
+<div class="content">
+    <div class="row clearfix">
+        <div class="col-sm-4" style="height: 300px;padding-right: 0;">
+            <img src="http://img.blog.csdn.net/20170608143351943" width="100%" height="300px;">
+        </div>
+        <div class="col-sm-4" style="height: 300px;padding-right: 0;">
+            <img src="http://img.blog.csdn.net/20170608143351943" width="100%" height="300px;">
+        </div>
+        <div class="col-sm-4 personal-info" style="height: 300px;">
+            <div style="background: white;height: 300px;text-align: center;">
+                <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 20px;" />
+                <div style="text-align: left;padding: 15px 30px;">个人简介：主研方向 Android 和 JavaWeb，马不停蹄，追求卓越，钻研技术，热爱科技</div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <script>
-    alert("I am index");
 </script>
 <%include footer.html%>

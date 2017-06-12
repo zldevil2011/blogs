@@ -7,7 +7,7 @@ var userSchema = new Schema({
     email:String
 });
 user_model = mongoose.model('users', userSchema);
-function user_insert(user_info, res){
+function user_register(user_info, res){
     var user = new user_model({
         username:user_info.username,
         password:user_info.password,
@@ -17,10 +17,10 @@ function user_insert(user_info, res){
     user.save(function(err){
         if(err){
             console.log("Error" + err);
-            result = err;
+            result = "error";
         }else{
             console.log("register success log");
-            result = "register success";
+            result = "success";
         }
         console.log("pre_result" + result);
         res.send(result);
@@ -31,11 +31,11 @@ function user_login(user_info, res){
         console.log("The number of record find:" + doc);
         if(doc > 0){
           console.log(user_info.username + " login success in " + new Date());
-          res.send("Login Success");
+          res.send("success");
         }else{
           console.log(user_info.username + " login failed " + new Date());
-          res.send("Login Failed");
+          res.send("error");
         }
     });
 }
-exports.user = {user:user_model, user_insert:user_insert, user_login:user_login};
+exports.user = {user:user_model, user_register:user_register, user_login:user_login};
