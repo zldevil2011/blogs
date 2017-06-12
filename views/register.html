@@ -1,0 +1,66 @@
+<%include header.html %>
+<div class="div_vertical_horizontal_center form-div">
+    <div style="padding: 25px;" id="app">
+        <form style="overflow: hidden;display: block;" onsubmit="return false;">
+            <div class="group">
+                <div class="col-md-12" style="color:pink;text-align: center;">{{message}}</div>
+            </div>
+            <div class = "group">
+                <label for="username" class="col-sm-4">Username</label>
+                <div class="col-sm-8">
+                    <input type="text" id="username" class="form-item" v-model="username">
+                </div>
+            </div>
+            <div class = "group">
+                <label for="password" class="col-sm-4">Password</label>
+                <div class="col-sm-8">
+                    <input type="text" id="password" class="form-item" v-model="password">
+                </div>
+            </div>
+
+            <div class="group">
+                <label class="col-sm-4" for="email">Email</label>
+                <div class="col-sm-8">
+                    <input type="email" class="form-control" id="email" v-model="email"/>
+                </div>
+            </div>
+            <div class = "group">
+                <input type="submit" value="Register" class="zl-btn zl-btn-block zl-btn-success" v-on:click="register">
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:'用户名或密码错误',
+            username:'username',
+            password:'password',
+            email:'email'
+        },
+        methods:{
+            register:function(){
+                if(this.username.replace(" ", "") == ""){
+                    this.message = "Username please";
+                    return false;
+                }else if(this.password.replace(" ", "") == ""){
+                    this.message = "Password please";
+                    return false;
+                }else if(this.email.replace(" ", "") == ""){
+                    this.message = "Email please";
+                    return false;
+                }
+                this.$http.post('/users/register/',
+                    {username:this.username,password:this.password,email:this.email})
+                    .then(function(res){
+                        console.log(res);
+                        alert(res.body);
+                    },function(){
+                        alert('请求失败处理'); //失败处理
+                    });
+            }
+        }
+    });
+</script>
+<%include footer.html%>
