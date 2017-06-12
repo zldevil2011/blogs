@@ -98,3 +98,9 @@ a {
 .content{
   margin: 20px 50px;
 }
+.blog-item{
+  background: white;
+  margin: 10px 0;
+  height: 180px;
+  line-height: 180px;
+}
