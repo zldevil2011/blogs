@@ -15,6 +15,7 @@ npm install 软件名 -g 表示全局安装
 4：安装mongodb
 
 详细过程见http://blog.csdn.net/acm_zl/article/details/47447011，主要是建立data和log的存储
+
 5：安装supervisor，这样每次修改之后就不用手动重启了
 
 6: 新建express项目：express -e blogs 默认的EJS模版，可改为HTML模版
