@@ -23,11 +23,11 @@ router.get('/', function(req, res) {
 router.get('/blog/:blog_id', function(req, res) {
   blog.blog_information(req.params.blog_id, function(err, result){
     console.log(result);
+    console.log(err);
     if(err){
-      res.send("");
+      res.render('blog_information', { title: 'Blog' , user:JSON.stringify({}), blog:JSON.stringify({}) });
     }else{
-      res.send(result);
-      // res.render('index', { title: 'Express' , user:JSON.stringify(req.session.user), classification_list:JSON.stringify(result) });
+      res.render('blog_information', { title: 'Blog' , user:JSON.stringify({}), blog:JSON.stringify(result[0]), });
     }
   })
 

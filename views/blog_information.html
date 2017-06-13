@@ -1,0 +1,33 @@
+<%include header.html %>
+<div class="header" id="user_info">
+    <ul class="horizontal-ul" style="cursor: pointer;">
+        <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <li class="pull-right logout" onclick="window.location.href='/users/logout/'">登出</li>
+        <li class="pull-right">&nbsp;</li>
+        <li class="pull-right username" onclick="window.location.href='/users/index/'"><%= JSON.parse(user).username %></li>
+    </ul>
+</div>
+<div class="menu">
+    <ul class="horizontal-ul">
+        <li>首页</li><li>专栏</li><li>专家</li><li>排行</li><li>我的</li>
+    </ul>
+</div>
+<div class="content" id="blog" style="">
+    <div class="clearfix" style="text-align: center;margin: 20px 0;padding:10px 0;background: white;">
+        <div style="font-size: 24px;font-weight: bold;">{{blog.title}}</div>
+        <p style="float: right;margin: 0;color:gray;">阅读量:{{blog.read_count}} &nbsp;&nbsp;&nbsp;&nbsp; 时间:{{blog.date}}</p>
+    </div>
+    <div class="clearfix" v-html="blog.content" style="background: white;padding: 20px;">
+    </div>
+</div>
+
+<script>
+    var blog = <%-blog%>;
+    var blog_app = new Vue({
+        el:"#blog",
+        data:{
+
+        }
+    });
+</script>
+<%include footer.html%>
