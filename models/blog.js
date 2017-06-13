@@ -42,4 +42,19 @@ blog_model.blog_information = function(blog_id, callback){
         callback(null,result);
     });
 };
+blog_model.update_blog = function(blog_id, blog_info, callback){
+    var conditions = {
+       _id: blog_id,
+    };
+    var update = {
+        $set : {
+            title:blog_info.title || "",
+            content:blog_info.content || "",
+            date:new Date(),
+        }
+    };
+    blog_model.update(conditions, update, function(err){
+        callback(err);
+    });
+};
 exports.blogs = blog_model;

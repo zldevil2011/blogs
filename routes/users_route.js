@@ -88,4 +88,34 @@ router.post('/personal_add_blog',function(req, res){
         res.send("error");
     }
 });
+router.get('/edit_blog/:blog_id', function(req, res) {
+    if(req.session.user) {
+        blog.blog_information(req.params.blog_id, function(err, result){
+            if(err){
+                res.render('personal_edit_blog', { title: 'Edit Blog' , user:JSON.stringify(req.session.user), blog:JSON.stringify({}) });
+            }else{
+                res.render('personal_edit_blog', { title: 'Edit Blog' , user:JSON.stringify(req.session.user), blog:JSON.stringify(result[0]) });
+            }
+        })
+    }else{
+        res.redirect('/users/login/');
+    }
+});
+router.post('/edit_blog/:blog_id', function(req, res) {
+    if(req.session.user) {
+        var blog_info = {
+            title:req.body.title,
+            content:req.body.content,
+        };
+        blog.update_blog(req.params.blog_id, blog_info, function(err){
+            if(err){
+                res.send("error");
+            }else{
+                res.send("success");
+            }
+        })
+    }else{
+        res.send("error");
+    }
+});
 module.exports = router;
