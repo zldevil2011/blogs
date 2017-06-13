@@ -5,7 +5,8 @@ var blogSchema = new Schema({
     author:String,
     date:Date,
     time:String,
-    read_count:Integer
+    read_count:Integer,
+    author_id:String,
 });
 
 exports.blogs = mongoose.model('blogs', blogSchema);

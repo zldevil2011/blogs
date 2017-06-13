@@ -50,4 +50,8 @@ router.post('/login', function(req,res){
 router.get('/logout',function(req, res){
     user.user_logout(req, res);
 });
+router.get('/index',function(req, res){
+    res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user)});
+});
+
 module.exports = router;
