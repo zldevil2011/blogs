@@ -1,10 +1,10 @@
 <%include header.html %>
-<div class="header">
-    <ul class="horizontal-ul">
+<div class="header" id="user_info">
+    <ul class="horizontal-ul" style="cursor: pointer;">
         <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
-        <li class="pull-right">登出</li>
+        <li class="pull-right" onclick="window.location.href='/users/logout/'">登出</li>
         <li class="pull-right">&nbsp;</li>
-        <li class="pull-right">用户名</li>
+        <li class="pull-right"><%= JSON.parse(user).username %></li>
     </ul>
 </div>
 <div class="menu">
@@ -171,5 +171,18 @@
 </div>
 
 <script>
+    var user = '<%- user %>';
+    console.log(typeof user);
+    console.log(user.username);
+    user = JSON.parse(user);
+    console.log(typeof user);
+    console.log(user.username);
+    var user_info_app = new Vue({
+        el:"#user_info",
+        data:{
+
+        }
+    });
+
 </script>
 <%include footer.html%>

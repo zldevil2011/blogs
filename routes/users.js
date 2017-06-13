@@ -38,7 +38,7 @@ router.post('/login', function(req,res){
         password:req.body.password,
     };
     try{
-        user.user_login(user_info, res);
+        user.user_login(user_info, req, res);
     }catch(e){
         console.log(e.message);
         console.log(e.description);
@@ -46,5 +46,8 @@ router.post('/login', function(req,res){
         console.log(e.name);
         res.send("Not success");
     }
+});
+router.get('/logout',function(req, res){
+    user.user_logout(req, res);
 });
 module.exports = router;

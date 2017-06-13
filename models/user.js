@@ -28,16 +28,36 @@ function user_register(user_info, res){
         res.send(result);
     });
 }
-function user_login(user_info, res){
-    user_model.count(user_info, function(err, doc){
-        console.log("The number of record find:" + doc);
-        if(doc > 0){
-          console.log(user_info.username + " login success in " + new Date());
-          res.send("success");
+function user_login(user_info, req, res){
+    console.log(req.session);
+    user_model.find(user_info, function(err, result){
+        if(result.length > 0){
+            if(req.session.user){
+                console.log("We have session");
+            }else{
+                req.session.user = result[0];
+                console.log("Session User: " + req.session.user);
+            }
+            console.log(user_info.username + " login success in " + new Date());
+            res.send("success");
         }else{
           console.log(user_info.username + " login failed " + new Date());
           res.send("error");
         }
     });
 }
-exports.user = {user:user_model, user_register:user_register, user_login:user_login};
+function user_logout(req, res){
+    try{
+        delete req.session.user;
+        res.redirect('/users/login/');
+    }catch (e){
+        res.send("delete failed");
+        res.send(e);
+    }
+}
+exports.user = {
+    user:user_model,
+    user_register:user_register,
+    user_login:user_login,
+    user_logout:user_logout,
+};
