@@ -19,6 +19,9 @@
     </div>
     <div class="clearfix" v-html="blog.content" style="background: white;padding: 20px;">
     </div>
+    <div class="clearfix" style="margin-top: 10px;">
+        <button class="btn btn-block btn-danger" v-on:click="editBlog">编辑</button>
+    </div>
 </div>
 
 <script>
@@ -26,7 +29,13 @@
     var blog_app = new Vue({
         el:"#blog",
         data:{
-
+            blog_id:blog._id,
+        },
+        methods:{
+            editBlog:function(){
+                console.log(this.blog_id);
+                window.location.href="/users/edit_blog/" + this.blog_id;
+            }
         }
     });
 </script>
