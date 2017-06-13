@@ -144,3 +144,25 @@ a:link {color: #000;} /* 未访问的链接 */
 a:visited {color: #F00;} /* 已访问的链接 */
 a:hover{color: #0F0;text-decoration: none;} /* 鼠标在链接上 */
 a:active {color: #00F;}/* 点击激活链接——在你点击该链接之后，页面正在转向新地址的时候，链接显示此颜色；当你已经到了要链接的页面，然后再返回，原页面上的此链接仍是此颜色 */
+.username{
+  color:black;
+}
+.logout:hover{
+  color:red;
+}
+.classification_list{
+  border:1px solid black;
+  border-radius: 5px;
+}
+.classification_list ul li{
+  text-decoration: none;
+  display: inline-block;
+  padding:6px 12px;
+  cursor: pointer;
+}
+.classification_list ul li:first-of-type{
+  padding-left: 0;
+}
+.classification_list ul li:hover{
+  color:red;
+}

@@ -1,0 +1,31 @@
+<%include header.html %>
+<div id = "classification_app" class="classification_list">
+    <h4 style="padding-left: 40px;">现有分类</h4>
+    <ul>
+        <li v-for="classification in classification_list">{{classification}}</li>
+    </ul>
+    <div style="overflow: hidden;margin-bottom: 20px;">
+        <input v-model="newTodo" class="form-item" style="width: 49%;display: inline-block;margin-left: 1%;">
+        <button v-on:click="createClassfication" class="zl-btn zl-btn-success" style="display: inline-block;padding: 5px 12px;width: 49%;">新建</button>
+    </div>
+</div>
+<script>
+    var classification_app = new Vue({
+        el: "#classification_app",
+        data:{
+            newTodo:'',
+            classification_list:['分类一','分类一','分类一','分类一','分类一','分类一','分类一']
+        },
+        methods:{
+            createClassfication:function(){
+                var text = this.newTodo.trim();
+                if(text){
+                    console.log("new classification");
+                    this.classification_list.push(text);
+                    this.newTodo = '';
+                }
+            }
+        }
+    });
+</script>
+<%include footer.html%>

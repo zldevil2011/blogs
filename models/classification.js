@@ -7,4 +7,24 @@ var classificationSchema = new Schema({
     introduction:String,
 });
 classification_model = mongoose.model('classifications', classificationSchema);
-exports.classifications = {classification:classification_model};
+
+classification_model.createClassification = function (classification_info) {
+    var classification = new classification_model({
+        name:classification_info.name
+    });
+    var result = "";
+    classification.save(function(err){
+        if(err){
+            console.log("Save failed" + err);
+            result = "error";
+        }else{
+            console.log("Save classification success");
+            result = "succee";
+        }
+        res.send(result);
+    });
+};
+
+
+
+exports.classifications = classification_model
