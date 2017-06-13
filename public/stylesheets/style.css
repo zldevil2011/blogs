@@ -102,7 +102,25 @@ a {
   background: white;
   margin: 10px 0;
   height: 180px;
+  overflow: hidden;
+  text-overflow:ellipsis;
   /*line-height: 180px;*/
+}
+.blog-item-title{
+  line-height: 90px;
+  font-size: 16px;
+  font-weight: bold;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+}
+.blog-item-content{
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 .blog-category{
   background: white;
@@ -121,3 +139,8 @@ a {
   margin-top: 10px;
   height: 300px;
 }
+a{text-decoration:none}
+a:link {color: #000;} /* 未访问的链接 */
+a:visited {color: #F00;} /* 已访问的链接 */
+a:hover{color: #0F0;text-decoration: none;} /* 鼠标在链接上 */
+a:active {color: #00F;}/* 点击激活链接——在你点击该链接之后，页面正在转向新地址的时候，链接显示此颜色；当你已经到了要链接的页面，然后再返回，原页面上的此链接仍是此颜色 */
