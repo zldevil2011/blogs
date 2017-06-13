@@ -1,0 +1,66 @@
+<%include header.html %>
+<div class="header" id="user_info">
+    <ul class="horizontal-ul" style="cursor: pointer;">
+        <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <li class="pull-right logout" onclick="window.location.href='/users/logout/'">登出</li>
+        <li class="pull-right">&nbsp;</li>
+        <li class="pull-right username"><%= JSON.parse(user).username %></li>
+    </ul>
+</div>
+<div class="personal-menu" style="margin-right: 50px;">
+    <ul>
+        <li>列表</li>
+        <li>信息</li>
+    </ul>
+</div>
+<div class="content">
+    <div class="clearfix" id="add_blog">
+        <div class="title" style="background: white;">
+            <span class="form-item" style="width: 10%;display: inline-block;background: transparent;border: none;text-align: center;border-radius: 0;">Title</span>
+            <input v-model="blog_title" class="form-item" style="border:none;border-radius: 0;width: 90%;display: inline-block;">
+        </div>
+        <div class="blog-content" style="background: white;margin-top: 10px;">
+            <div style="padding-top: 10px;">Content</div>
+            <hr style="margin-top: 10px;margin-bottom: 10px;">
+            <div id="content_editor" style="">
+            </div>
+        </div>
+        <div style="text-align: center;">
+            <button class="zl-btn zl-btn-success" style="width: 100%;" v-on:click = "saveBlog">Save</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        $("#content_editor").summernote({
+            height: 300,
+        });
+    });
+    var add_blog_app = new Vue({
+        el:"#add_blog",
+        data:{
+            blog_title:"",
+        },
+        methods:{
+            saveBlog:function(){
+                var b_html = $("#content_editor").summernote('code');
+                console.log(b_html);
+                var blog_title = this.blog_title;
+                this.$http.post(window.location.href, {title:blog_title,content:b_html})
+                        .then(function(res){
+                            console.log(res);
+                            if(res.body == "success"){
+                                alert("Save success");
+                                window.location.href='/users/index/';
+                            }else{
+                                alert("Save failed");
+                            }
+                        },function(){
+
+                        })
+            }
+        }
+    });
+</script>
+<%include footer.html%>

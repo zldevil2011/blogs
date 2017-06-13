@@ -13,8 +13,8 @@
         <li>信息</li>
     </ul>
 </div>
-<div class="content">
-    <div class="row clearfix" id="blog_list">
+<div class="content" id="blog_list">
+    <div class="row clearfix">
         <div class="col-sm-12" style="padding-right: 0;">
             <div class="col-sm-12 personl-blog-item">
                 <div class="col-sm-8">
@@ -120,9 +120,22 @@
             </div>
         </div>
     </div>
+    <div class="col-sm-12">
+        <button class="zl-btn zl-btn-success zl-btn-block" v-on:click="addBlog">新建</button>
+    </div>
 </div>
 
 <script>
+    var blog_list_app = new Vue({
+        el:"#blog_list",
+        data:{
 
+        },
+        methods:{
+            addBlog:function(){
+                window.location.href='/users/personal_add_blog/';
+            }
+        }
+    });
 </script>
 <%include footer.html%>
