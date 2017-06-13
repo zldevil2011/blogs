@@ -132,6 +132,10 @@ a {
   font-family: 'Microsoft YaHei';
   font-weight: normal;
   text-align: center;
+  cursor: pointer;
+}
+.blog-category .col-sm-6:hover{
+  background: rgba(197, 149, 149, 0.1);
 }
 .contact-us{
   padding: 20px;

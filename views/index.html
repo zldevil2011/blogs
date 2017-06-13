@@ -107,55 +107,10 @@
             </div>
         </div>
         <div class="col-sm-4" style="margin-top: 10px;">
-            <div class="blog-category">
+            <div class="blog-category" id="blog_category_app">
                 <div class="clearfix row" style="margin-left: 0;">
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
-                    </div>
-                    <div class="col-sm-6">
-                        分类一
+                    <div class="col-sm-6" v-for="classification in classification_list">
+                        {{classification}}
                     </div>
                 </div>
             </div>
@@ -171,18 +126,20 @@
 </div>
 
 <script>
-    var user = '<%- user %>';
-    console.log(typeof user);
-    console.log(user.username);
-    user = JSON.parse(user);
-    console.log(typeof user);
-    console.log(user.username);
-    var user_info_app = new Vue({
-        el:"#user_info",
+    var c_list = <%- classification_list %>;
+    var tmp = [];
+    for(var i = 0; i < c_list.length; ++i){
+        tmp.push(c_list[i].name);
+    }
+    console.log(tmp);
+    console.log(typeof tmp);
+    var blog_category_app = new Vue({
+        el:'#blog_category_app',
         data:{
-
+           classification_list:tmp,
+        },
+        methods:{
         }
     });
-
 </script>
 <%include footer.html%>

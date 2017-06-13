@@ -10,21 +10,36 @@
     </div>
 </div>
 <script>
+    var classification_list = <%- classification_list %>;
+    var tmp = [];
+    for(var i = 0; i < classification_list.length; ++i){
+        tmp.push(classification_list[i].name);
+    };
     var classification_app = new Vue({
         el: "#classification_app",
         data:{
             newTodo:'',
-            classification_list:['分类一','分类一','分类一','分类一','分类一','分类一','分类一']
+            classification_list:tmp
         },
         methods:{
             createClassfication:function(){
                 var text = this.newTodo.trim();
                 if(text){
                     console.log("new classification");
-                    this.classification_list.push(text);
-                    this.newTodo = '';
+                    this.$http.post('/admin/create_classification/', {name:this.newTodo})
+                            .then(function(res){
+                                if(res.body == "success"){
+                                    this.classification_list.push(text);
+                                    this.newTodo = '';
+                                }else{
+                                    alert("创建失败");
+                                }
+                            },function(){
+                               console.log("Create failed");
+                            });
+
                 }
-            }
+            },
         }
     });
 </script>
