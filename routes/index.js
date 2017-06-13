@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
-var classification = require("../models/classification").classifications
+var classification = require("../models/classification").classifications;
+var blog = require("../models/blog").blogs;
 
 /* GET home page. */
 router.get('/', function(req, res) {
@@ -17,6 +18,18 @@ router.get('/', function(req, res) {
   }else{
     res.redirect('/users/login/');
   }
+
+});
+router.get('/blog/:blog_id', function(req, res) {
+  blog.blog_information(req.params.blog_id, function(err, result){
+    console.log(result);
+    if(err){
+      res.send("");
+    }else{
+      res.send(result);
+      // res.render('index', { title: 'Express' , user:JSON.stringify(req.session.user), classification_list:JSON.stringify(result) });
+    }
+  })
 
 });
 

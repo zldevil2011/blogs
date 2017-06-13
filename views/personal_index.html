@@ -119,6 +119,7 @@
                 </div>
             </div>
             <div class="col-sm-12 personl-blog-item" v-for="blog in blog_list">
+                <span style="display: none;">{{blog._id}}</span>
                 <div class="col-sm-8">
                    <div class = "personl-blog-item-title"><a href="#">{{blog.title}}</a></div>
                 </div>
@@ -130,8 +131,8 @@
                 </div>
                 <div class="col-sm-4">
                    <div class = "personl-blog-item-operation">
-                       <button class="btn btn-success btn-sm">编辑</button>
-                       <button class="btn btn-danger btn-sm">删除</button>
+                       <button class="btn btn-success btn-sm" v-on:click="editBlog(blog._id)">编辑</button>
+                       <button class="btn btn-danger btn-sm" v-on:click="deleteBlog(blog._id)">删除</button>
                    </div>
                 </div>
             </div>
@@ -152,6 +153,14 @@
         methods:{
             addBlog:function(){
                 window.location.href='/users/personal_add_blog/';
+            },
+            editBlog:function(id){
+                console.log(id);
+                alert("Edit");
+                window.location.href='/blog/' + id;
+            },
+            deleteBlog:function(id){
+                alert("Delete");
             }
         }
     });

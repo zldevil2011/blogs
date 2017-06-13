@@ -4,7 +4,7 @@
         <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
         <li class="pull-right logout" onclick="window.location.href='/users/logout/'">登出</li>
         <li class="pull-right">&nbsp;</li>
-        <li class="pull-right username"><%= JSON.parse(user).username %></li>
+        <li class="pull-right username" onclick="window.location.href='/users/index/'"><%= JSON.parse(user).username %></li>
     </ul>
 </div>
 <div class="menu">

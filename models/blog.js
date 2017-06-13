@@ -34,4 +34,12 @@ blog_model.my_classification = function(author_id, callback){
         callback(null,result);
     });
 };
+blog_model.blog_information = function(blog_id, callback){
+    var blog_info = {
+       _id: blog_id,
+    };
+    blog_model.find(blog_info, function(res, result){
+        callback(null,result);
+    });
+};
 exports.blogs = blog_model;
