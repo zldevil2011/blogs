@@ -26,4 +26,12 @@ blog_model.createBlog = function(blog_info, req, res){
         }
     });
 };
+blog_model.my_classification = function(author_id, callback){
+    var user_info = {
+       author_id: author_id,
+    };
+    blog_model.find(user_info, function(res, result){
+        callback(null,result);
+    });
+};
 exports.blogs = blog_model

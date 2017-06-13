@@ -118,6 +118,23 @@
                    </div>
                 </div>
             </div>
+            <div class="col-sm-12 personl-blog-item" v-for="blog in blog_list">
+                <div class="col-sm-8">
+                   <div class = "personl-blog-item-title"><a href="#">{{blog.title}}</a></div>
+                </div>
+                <div class="col-sm-4">
+                   <div class = "personl-blog-item-time">{{blog.date}}</div>
+                </div>
+                <div class="col-sm-8">
+                    <div class = "personl-blog-item-content">{{blog.content}}</div>
+                </div>
+                <div class="col-sm-4">
+                   <div class = "personl-blog-item-operation">
+                       <button class="btn btn-success btn-sm">编辑</button>
+                       <button class="btn btn-danger btn-sm">删除</button>
+                   </div>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-sm-12">
@@ -126,10 +143,11 @@
 </div>
 
 <script>
+    var blog_list = <%-blog_list%>;
     var blog_list_app = new Vue({
         el:"#blog_list",
         data:{
-
+            blog_list:blog_list,
         },
         methods:{
             addBlog:function(){

@@ -52,7 +52,20 @@ router.get('/logout',function(req, res){
     user.user_logout(req, res);
 });
 router.get('/index',function(req, res){
-    res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user)});
+    if(req.session.user){
+        console.log(req.session.user._id);
+        blog.my_classification(req.session.user._id, function(err, result){
+            console.log(result);
+            if(err){
+                res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user), "blog_list":""});
+            }else{
+                res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user), "blog_list":JSON.stringify(result)});
+            }
+        });
+    }else{
+        res.redirect('/users/login/');
+    }
+
 });
 router.get('/personal_add_blog',function(req, res){
     res.render('personal_add_blog', {title:'新建Blog',user:JSON.stringify(req.session.user)});

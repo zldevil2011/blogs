@@ -30,14 +30,6 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectRootManager" version="2" project-jdk-name="Python 2.7.12 virtualenv at ~/Projects/JSFY/EnvironmentalMonitoring/emp_env (1)" project-jdk-type="Python SDK" />
-  <component name="PyConsoleOptionsProvider">
-    <option name="myPythonConsoleState">
-      <console-settings sdk-home="$USER_HOME$/Projects/JSFY/EnvironmentalMonitoring/emp_env/bin/python" working-directory="$USER_HOME$/Projects/JSFY/EnvironmentalMonitoring/emp_env/bin">
-        <option name="mySdkHome" value="$USER_HOME$/Projects/JSFY/EnvironmentalMonitoring/emp_env/bin/python" />
-        <option name="myWorkingDirectory" value="$USER_HOME$/Projects/JSFY/EnvironmentalMonitoring/emp_env/bin" />
-      </console-settings>
-    </option>
-  </component>
   <component name="VagrantProjectSettings">
     <option name="instanceFolder" value="" />
     <option name="provider" value="" />
