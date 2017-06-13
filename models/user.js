@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 var userSchema = new Schema({
     username:String,
     password:String,
-    email:String
+    email:String,
+    portrait:String,
+    introduction:String,
 });
 user_model = mongoose.model('users', userSchema);
 function user_register(user_info, res){
