@@ -68,7 +68,12 @@ router.get('/index',function(req, res){
 
 });
 router.get('/personal_add_blog',function(req, res){
-    res.render('personal_add_blog', {title:'新建Blog',user:JSON.stringify(req.session.user)});
+    if(req.session.user){
+        res.render('personal_add_blog', {title:'新建Blog',user:JSON.stringify(req.session.user)});
+    }else{
+        res.redirect('/users/login/');
+    }
+
 });
 router.post('/personal_add_blog',function(req, res){
     if(req.session.user){
