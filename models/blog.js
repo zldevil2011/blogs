@@ -34,4 +34,4 @@ blog_model.my_classification = function(author_id, callback){
         callback(null,result);
     });
 };
-exports.blogs = blog_model
+exports.blogs = blog_model;
