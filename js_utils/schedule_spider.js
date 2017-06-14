@@ -7,7 +7,7 @@ var url = require('url');
 var blog = require('../models/blog').blogs;
 
 function scheduleCronstyle(){
-    schedule.scheduleJob('30 * * * * *', function(){
+    schedule.scheduleJob('30 1 1 * * *', function(){
         console.log('scheduleCronstyle:' + new Date());
         getLatestCnodeTopic();
     });
