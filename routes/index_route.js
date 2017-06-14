@@ -111,9 +111,9 @@ router.get('/blog/:blog_id', function(req, res) {
       console.log(result);
       console.log(err);
       if(err){
-        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify(req.session.user), blog:JSON.stringify({}) });
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:1,user:JSON.stringify(req.session.user), blog:JSON.stringify({}) });
       }else{
-        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify(req.session.user), blog:JSON.stringify(result[0]), });
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:1,user:JSON.stringify(req.session.user), blog:JSON.stringify(result[0]), });
       }
     })
   }else{
