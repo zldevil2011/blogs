@@ -106,15 +106,28 @@ router.get('/', function(req, res) {
 
 });
 router.get('/blog/:blog_id', function(req, res) {
-  blog.blog_information(req.params.blog_id, function(err, result){
-    console.log(result);
-    console.log(err);
-    if(err){
-      res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify({}), blog:JSON.stringify({}) });
-    }else{
-      res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify({}), blog:JSON.stringify(result[0]), });
-    }
-  })
+  if(req.session.user){
+    blog.blog_information(req.params.blog_id, function(err, result){
+      console.log(result);
+      console.log(err);
+      if(err){
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify(req.session.user), blog:JSON.stringify({}) });
+      }else{
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify(req.session.user), blog:JSON.stringify(result[0]), });
+      }
+    })
+  }else{
+    blog.blog_information(req.params.blog_id, function(err, result){
+      console.log(result);
+      console.log(err);
+      if(err){
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify({}), blog:JSON.stringify({}) });
+      }else{
+        res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify({}), blog:JSON.stringify(result[0]), });
+      }
+    })
+  }
+
 
 });
 
