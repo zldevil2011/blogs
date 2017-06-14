@@ -15,17 +15,26 @@ function user_register(user_info, res){
         password:user_info.password,
         email:user_info.email
     });
-    var result = "";
-    user.save(function(err){
-        if(err){
-            console.log("Error" + err);
-            result = "error";
+    user_info = {
+        username:user_info.username,
+    };
+    user_model.find(user_info, function(err, result){
+        if(result.length > 0){
+            res.send("error");
         }else{
-            console.log("register success log");
-            result = "success";
+            var register_result = "";
+            user.save(function(err){
+                if(err){
+                    console.log("Error" + err);
+                    register_result = "error";
+                }else{
+                    console.log("register success log");
+                    register_result = "success";
+                }
+                console.log("pre_result" + result);
+                res.send(register_result);
+            });
         }
-        console.log("pre_result" + result);
-        res.send(result);
     });
 }
 function user_login(user_info, req, res){
