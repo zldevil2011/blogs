@@ -27,6 +27,23 @@ blog_model.createBlog = function(blog_info, req, res){
         }
     });
 };
+blog_model.insertBlog = function(blog_info){
+    var blog = new blog_model({
+        title:blog_info.title || "",
+        content:blog_info.content || "",
+        author:blog_info.author || "",
+        date:new Date(),
+        read_count:0,
+        author_id:blog_info.author_id || "",
+    });
+    blog.save(function(err){
+        if(err){
+            console.log("Insert blog failed" + new Date());
+        }else{
+            console.log("Insert blog success" + new Date());
+        }
+    });
+};
 blog_model.my_blog_list = function(author_id, callback){
     var user_info = {
        author_id: author_id,
