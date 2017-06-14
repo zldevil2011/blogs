@@ -22,89 +22,91 @@
         </div>
         <div class="col-sm-4 personal-info" style="height: 300px;">
             <div style="background: white;height: 300px;text-align: center;">
-                <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 20px;" />
-                <div style="text-align: left;padding: 15px 30px;">个人简介：主研方向 Android 和 JavaWeb，马不停蹄，追求卓越，钻研技术，热爱科技</div>
+                <img alt="140x140" src="<%= JSON.parse(user).portrait %>" class="img-circle" style="margin-top: 20px;" height="140" width="140"/>
+                <div style="text-align: left;padding: 15px 30px;">个人简介：<%= JSON.parse(user).description %></div>
+                <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 20px;" />-->
+                <!--<div style="text-align: left;padding: 15px 30px;">个人简介：主研方向 Android 和 JavaWeb，马不停蹄，追求卓越，钻研技术，热爱科技</div>-->
             </div>
         </div>
     </div>
     <div class="row clearfix">
-        <div class="col-sm-8" style="padding-right: 0;">
-            <div class="col-sm-12 blog-item">
+        <div class="col-sm-8" style="padding-right: 0;" id="blog_list_app">
+            <div class="col-sm-12 blog-item" v-for="blog in blog_list">
                 <div class="row clearfix">
                     <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
+                        <img alt="140x140" v-bind:src=blog.author_portrait class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
+                        <div>{{blog.author}}</div>
                     </div>
                     <div class="col-sm-9">
-                        <div class = "blog-item-title"><a href="#">Elasticsearch 5.4 Mapping详解Elasticsearch 5.4 Mapping详解Elasticsearch 5.4 Mapping详解Elasticsearch 5.4 Mapping详解Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>
+                        <div class = "blog-item-title"><a :href="getBlogUrl(blog._id)">{{blog.title}}</a></div>
+                        <div class = "blog-item-content">{{blog.content}}</div>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-12 blog-item">
-                <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...
-                            Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...
-                            Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...
-                            Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 blog-item">
-                <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 blog-item">
-                <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 blog-item">
-                <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-12 blog-item">
-                <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>Author</div>
-                    </div>
-                    <div class="col-sm-9">
-                        <div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>
-                        <div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>
-                    </div>
-                </div>
-            </div>
+            <!--<div class="col-sm-12 blog-item">-->
+                <!--<div class="row clearfix">-->
+                    <!--<div class="col-sm-3" style="text-align: center;">-->
+                        <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>-->
+                        <!--<div>Author</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>-->
+                        <!--<div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...-->
+                            <!--Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...-->
+                            <!--Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...-->
+                            <!--Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12 blog-item">-->
+                <!--<div class="row clearfix">-->
+                    <!--<div class="col-sm-3" style="text-align: center;">-->
+                        <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>-->
+                        <!--<div>Author</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>-->
+                        <!--<div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12 blog-item">-->
+                <!--<div class="row clearfix">-->
+                    <!--<div class="col-sm-3" style="text-align: center;">-->
+                        <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>-->
+                        <!--<div>Author</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>-->
+                        <!--<div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12 blog-item">-->
+                <!--<div class="row clearfix">-->
+                    <!--<div class="col-sm-3" style="text-align: center;">-->
+                        <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>-->
+                        <!--<div>Author</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>-->
+                        <!--<div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-sm-12 blog-item">-->
+                <!--<div class="row clearfix">-->
+                    <!--<div class="col-sm-3" style="text-align: center;">-->
+                        <!--<img alt="140x140" src="http://ibootstrap-file.b0.upaiyun.com/lorempixel.com/140/140/default.jpg" class="img-circle" style="margin-top: 50px;" height="60" width="60"/>-->
+                        <!--<div>Author</div>-->
+                    <!--</div>-->
+                    <!--<div class="col-sm-9">-->
+                        <!--<div class="blog-item-title"><a href="#1">Elasticsearch 5.4 Mapping详解</a></div>-->
+                        <!--<div class = "blog-item-content">一、Field datatype(字段数据类型)1.1string类型ELasticsearch 5.X之后的字段类型不再支持string，由text或keyword取代。 如果仍使用string，会...</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <div class="col-sm-4" style="margin-top: 10px;">
             <div class="blog-category" id="blog_category_app">
@@ -139,6 +141,20 @@
            classification_list:tmp,
         },
         methods:{
+        }
+    });
+</script>
+<script>
+    var blog_list = <%-blog_list%>;
+    var blog_list_app = new Vue({
+        el:"#blog_list_app",
+        data:{
+
+        },
+        methods:{
+            getBlogUrl:function(val){
+                return "/blog/" + val;
+            }
         }
     });
 </script>

@@ -26,7 +26,7 @@ blog_model.createBlog = function(blog_info, req, res){
         }
     });
 };
-blog_model.my_classification = function(author_id, callback){
+blog_model.my_blog_list = function(author_id, callback){
     var user_info = {
        author_id: author_id,
     };
@@ -55,6 +55,11 @@ blog_model.update_blog = function(blog_id, blog_info, callback){
     };
     blog_model.update(conditions, update, function(err){
         callback(err);
+    });
+};
+blog_model.all_blog = function(callback){
+    blog_model.find({}, function(err, result){
+        callback(err,result);
     });
 };
 exports.blogs = blog_model;

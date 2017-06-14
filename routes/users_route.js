@@ -54,7 +54,7 @@ router.get('/logout',function(req, res){
 router.get('/index',function(req, res){
     if(req.session.user){
         console.log(req.session.user._id);
-        blog.my_classification(req.session.user._id, function(err, result){
+        blog.my_blog_list(req.session.user._id, function(err, result){
             console.log(result);
             if(err){
                 res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user), "blog_list":""});
