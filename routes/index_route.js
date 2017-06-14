@@ -110,6 +110,7 @@ router.get('/blog/:blog_id', function(req, res) {
     blog.blog_information(req.params.blog_id, function(err, result){
       console.log(result);
       console.log(err);
+      blog.add_blog_readcount(req.params.blog_id);
       if(err){
         res.render('blog_information', { title: 'Blog' , user_inf_tag:1,user:JSON.stringify(req.session.user), blog:JSON.stringify({}) });
       }else{
@@ -120,6 +121,7 @@ router.get('/blog/:blog_id', function(req, res) {
     blog.blog_information(req.params.blog_id, function(err, result){
       console.log(result);
       console.log(err);
+      blog.add_blog_readcount(req.params.blog_id);
       if(err){
         res.render('blog_information', { title: 'Blog' , user_inf_tag:0,user:JSON.stringify({}), blog:JSON.stringify({}) });
       }else{

@@ -80,4 +80,15 @@ blog_model.all_blog = function(callback){
         callback(err,result);
     });
 };
+blog_model.add_blog_readcount = function(blog_id){
+    var conditions = {
+       _id: blog_id,
+    };
+    var update = {
+        '$inc':{'read_count':1},
+    };
+    blog_model.update(conditions, update, function(err){
+        console.log("add read_count = read_count + 1");
+    });
+};
 exports.blogs = blog_model;
