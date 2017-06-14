@@ -19,6 +19,7 @@
             </div>
             <div class = "group">
                 <input type="submit" value="Login" class="zl-btn zl-btn-block zl-btn-success" v-on:click="login">
+                <span style="text-align: right;display: block;margin-top: 5px;cursor: pointer;" v-on:click="register">register</span>
             </div>
         </form>
     </div>
@@ -54,6 +55,9 @@
                         this.message = "登录失败";
                         alert('请求失败处理'); //失败处理
                     });
+            },
+            register:function(){
+                window.location.href='/users/register';
             }
         }
     });

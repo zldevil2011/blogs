@@ -26,6 +26,7 @@
             </div>
             <div class = "group">
                 <input type="submit" value="Register" class="zl-btn zl-btn-block zl-btn-success" v-on:click="register">
+                <span style="text-align: right;display: block;margin-top: 5px;cursor: pointer;" v-on:click="login">login</span>
             </div>
         </form>
     </div>
@@ -34,7 +35,7 @@
     var app = new Vue({
         el:"#app",
         data:{
-            message:'用户名或密码错误',
+            message:'',
             username:'username',
             password:'password',
             email:'email'
@@ -55,10 +56,20 @@
                     {username:this.username,password:this.password,email:this.email})
                     .then(function(res){
                         console.log(res);
-                        alert(res.body);
+                        if(res.body=="success"){
+                            this.message = "注册成功,3s后跳转到登录";
+                            setTimeout(function(){
+                                window.location.href='/users/login/';
+                            }, 3000);
+                        }else{
+                            this.message = "用户名已存在";
+                        }
                     },function(){
                         alert('请求失败处理'); //失败处理
                     });
+            },
+            login:function(){
+                window.location.href='/users/login/';
             }
         }
     });
