@@ -1,10 +1,14 @@
 <%include header.html %>
 <div class="header" id="user_info">
     <ul class="horizontal-ul" style="cursor: pointer;">
-        <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <li style="vertical-align: middle;" onclick="window.location.href='/'"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <% if (user_inf_tag > 0){%>
         <li class="pull-right logout" onclick="window.location.href='/users/logout/'">登出</li>
         <li class="pull-right">&nbsp;</li>
         <li class="pull-right username" onclick="window.location.href='/users/index/'"><%= JSON.parse(user).username %></li>
+        <% }else {%>
+        <li class="pull-right username" onclick="window.location.href='/users/login/'">登录</li>
+        <% } %>
     </ul>
 </div>
 <div class="menu">

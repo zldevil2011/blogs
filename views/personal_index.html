@@ -1,7 +1,7 @@
 <%include header.html %>
 <div class="header" id="user_info">
     <ul class="horizontal-ul" style="cursor: pointer;">
-        <li style="vertical-align: middle;"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
+        <li style="vertical-align: middle;" onclick="window.location.href='/'"><h2 style="margin: 0;padding: 0;">Blog</h2></li>
         <li class="pull-right logout" onclick="window.location.href='/users/logout/'">登出</li>
         <li class="pull-right">&nbsp;</li>
         <li class="pull-right username"><%= JSON.parse(user).username %></li>
