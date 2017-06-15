@@ -101,7 +101,7 @@ a {
 .blog-item{
   background: white;
   margin: 10px 0;
-  height: 180px;
+  height: 90px;
   overflow: hidden;
   text-overflow:ellipsis;
   /*line-height: 180px;*/

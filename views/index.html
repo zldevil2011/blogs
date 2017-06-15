@@ -37,13 +37,12 @@
         <div class="col-sm-8" style="padding-right: 0;" id="blog_list_app">
             <div class="col-sm-12 blog-item" v-for="blog in blog_list">
                 <div class="row clearfix">
-                    <div class="col-sm-3" style="text-align: center;">
-                        <img alt="140x140" v-bind:src=blog.author_portrait class="img-circle" style="margin-top: 50px;" height="60" width="60"/>
-                        <div>{{blog.author}}</div>
+                    <div class="col-sm-3" style="text-align: center;line-height: 90px;">
+                        <div><img alt="140x140" v-bind:src=blog.author_portrait class="img-circle" height="60" width="60"/>&nbsp;&nbsp;{{blog.author}}</div>
                     </div>
                     <div class="col-sm-9">
                         <div class = "blog-item-title"><a :href="getBlogUrl(blog._id)">{{blog.title}}</a></div>
-                        <div class = "blog-item-content">{{blog.content}}</div>
+                        <!--<div class = "blog-item-content">{{blog.content}}</div>-->
                     </div>
                 </div>
             </div>
