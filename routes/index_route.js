@@ -18,9 +18,10 @@ router.get('/', function(req, res) {
             res.render('index', { title: 'Express' , user_inf_tag:1,user:JSON.stringify(req.session.user), classification_list:JSON.stringify(result),blog_list:"" });
           }else{
             var ep = new eventproxy();
-            ep.after('author_portrait', blog_list_result.length, function(portraits){
+            var blog_list_result_length = Math.min(blog_list_result.length,20);
+            ep.after('author_portrait', blog_list_result_length, function(portraits){
               var new_blog_list_result = [];
-              for(var i = 0; i < blog_list_result.length && i < 20; ++i) {
+              for(var i = 0; i < blog_list_result_length; ++i) {
                 var c = blog_list_result[i];
                 var t = {
                   "_id":c._id,
@@ -40,7 +41,7 @@ router.get('/', function(req, res) {
               res.render('index', { title: 'Express' , user_inf_tag:1,user:JSON.stringify(req.session.user), classification_list:JSON.stringify(result),blog_list:JSON.stringify(blog_list_result) });
             });
             var portrait = [];
-            for(var i = 0; i < blog_list_result.length && i < 20; ++i){
+            for(var i = 0; i < blog_list_result_length; ++i){
                 var c = blog_list_result[i];
                 user.user_information(c.author_id, function(err, user_info){
                   if(err){
