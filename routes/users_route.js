@@ -55,7 +55,8 @@ router.get('/index',function(req, res){
     if(req.session.user){
         console.log(req.session.user._id);
         blog.my_blog_list(req.session.user._id, function(err, result){
-            console.log(result);
+            // console.log(result);
+            result = result.slice(0,20);
             if(err){
                 res.render('personal_index', {title:'个人主页',user:JSON.stringify(req.session.user), "blog_list":""});
             }else{
