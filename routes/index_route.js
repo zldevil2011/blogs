@@ -20,7 +20,7 @@ router.get('/', function(req, res) {
             var ep = new eventproxy();
             ep.after('author_portrait', blog_list_result.length, function(portraits){
               var new_blog_list_result = [];
-              for(var i = 0; i < blog_list_result.length; ++i) {
+              for(var i = 0; i < blog_list_result.length && i < 20; ++i) {
                 var c = blog_list_result[i];
                 var t = {
                   "_id":c._id,
