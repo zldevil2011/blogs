@@ -40,7 +40,7 @@ user_model.user_register = function(user_info, res){
     });
 };
 user_model.user_login = function(user_info, req, res){
-    console.log(req.session);
+    // console.log(req.session);
     user_model.find(user_info, function(err, result){
         if(result.length > 0){
             if(req.session.user){
